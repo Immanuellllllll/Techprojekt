@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrapper{
+            width: 1200px;
+            height: auto;
+            border: 1px solid black;
+            margin: 0 auto;
+            background-color: white;
+        }
+        #starlogo{
+            width: 100px;
+            height: 100px;
+        }
+        #starlogodiv{
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            border: 1px solid black;
+            display: inline-block;
+            float: left;
+
+        }
+        #logo{
+            width: 1000px;
+            height: 100px;
+        }
+        #logodiv{
+            width: auto;
+            height: 100px;
+            margin: 0 auto;
+            border: 1px solid black;
+
+        }
+        #navbar{
+            width: 100px;
+            height: 497px;
+            margin: 0 auto;
+            border: 1px solid black;
+            float: left;
+        }
+        #nyheder h1{
+            display: inline-block;
+            float: left;
+
+        }
+
+        #nyheds_area_div{
+            width: 1065px;
+            min-height: 497px;
+            height: auto;
+            margin-left: 130px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="logoerdiv">
+        <div id="starlogodiv">
+            <img id="starlogo" class="img-fluid" src="http://clipart-library.com/images/6cpoL69xi.jpg" alt="noope">
+        </div>
+        <div id="logodiv">
+            <img id="logo" class="img-fluid" src="https://api.colourbox.com/publicmedia302/1200px/24164363/media.eps" alt="noooope">
+        </div>
+    </div>
+
+    <nav id="navbar">
+
+    </nav>
+
+    <div id="nyheds_area_div">
+        <div id="login">
+        <h3>Login</h3>
+        <form th:action="@{/Blogs}"  th:object="${login}" method="post">
+                <div class="container" id="input_boxes">
+                    <label  for="username"><b>Username</b></label>
+                    <input type="text"  id="username" placeholder="Enter Username" name="username">
+                    <br>
+                    <label  for="password"><b>Password</b></label>
+                    <input  type="password" id="password" placeholder="Enter Password" name="password">
+                    <br>
+                    <input type="submit" value="Log In"/>
+                </div>
+            </form>
+        </div>
+        <div id="opret">
+        <h3>Opret bruger</h3>
+        <form th:action="@{/CreateUser}"  th:object="${login}" method="post">
+            <div class="container" id="input_boxes2">
+                <label  for="username2"><b>Username</b></label>
+                <input type="text"  id="username2" placeholder="Enter Username" name="username">
+                <br>
+                <label  for="password2"><b>Password</b></label>
+                <input  type="password" id="password2" placeholder="Enter Password" name="password">
+                <br>
+                <input type="submit" value="Log In"/>
+            </div>
+        </form>
+        </div>
+    </div>
+
+
+
+</div>
+

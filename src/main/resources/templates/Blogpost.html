@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:if="${session.admin !=null}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrapper{
+            width: 1200px;
+            height: auto;
+            border: 1px solid black;
+            margin: 0 auto;
+            background-color: white;
+        }
+        #starlogo{
+            width: 100px;
+            height: 100px;
+        }
+        #starlogodiv{
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            border: 1px solid black;
+            display: inline-block;
+            float: left;
+
+        }
+        #logo{
+            width: 1000px;
+            height: 100px;
+        }
+        #logodiv{
+            width: auto;
+            height: 100px;
+            margin: 0 auto;
+            border: 1px solid black;
+
+        }
+        #navbar{
+            width: 100px;
+            height: 497px;
+            margin: 0 auto;
+            border: 1px solid black;
+            float: left;
+        }
+        #header_text{
+            text-decoration: underline;
+        }
+        #nyheder{
+            width: auto;
+            height: auto;
+            margin-right: 10px;
+            border: 1px solid black;
+        }
+        #nyheder h1{
+            display: inline-block;
+            float: left;
+
+        }
+
+        #nyheds_billede{
+            width: 100px;
+            height: 90px;
+            margin: 5px;
+            border: 1px solid black;
+            float: right;
+        }
+        #nyheds_area_div{
+            width: 1065px;
+            min-height: 497px;
+            height: auto;
+            margin-left: 130px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #nyhedstext{
+            line-height: 1.6;
+            display: block;
+            width: 700px;
+            height: auto;
+            margin-top: 80px;
+            margin-right: 10px;
+            margin-left: 10px;
+            word-break: break-all; /*  */
+            word-wrap: break-word; /* if you want to cut the complete word */
+            white-space: normal;
+
+        }
+        #navbar h1{
+            font-size: 24px;
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="logoerdiv">
+        <div id="starlogodiv">
+            <img id="starlogo" class="img-fluid" src="http://clipart-library.com/images/6cpoL69xi.jpg" alt="noope">
+        </div>
+        <div id="logodiv">
+            <img id="logo" class="img-fluid" src="https://api.colourbox.com/publicmedia302/1200px/24164363/media.eps" alt="noooope">
+        </div>
+    </div>
+
+    <nav id="navbar">
+        <h1>Oversigt</h1>
+        <a href="/Blogs">Forside</a>
+        <br>
+        <a href="/Logout">Log ud</a>
+    </nav>
+    <div id="nyheds_area_div">
+
+        <div id="nyheder">
+
+            <h1 th:text="${blogpost.headertext}"></h1>
+            <img id="nyheds_billede" class="img-fluid" src="https://ing.dk/sites/ing/files/illustration/2018/03/fakenewsbigstock-199552525.jpg" alt="nope">
+            <p id="nyhedstext" type="text" th:text="${blogpost.text}">
+
+            </p>
+
+            </div>
+        </div>
+    </div>
+</body>
+</div>
+</html>

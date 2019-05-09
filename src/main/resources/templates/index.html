@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        #wrapper{
+            width: 1200px;
+            height: auto;
+            border: 1px solid black;
+            margin: 0 auto;
+            background-color: white;
+        }
+        #starlogo{
+            width: 100px;
+            height: 100px;
+        }
+        #starlogodiv{
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            border: 1px solid black;
+            display: inline-block;
+            float: left;
+
+        }
+        #logo{
+            width: 1000px;
+            height: 100px;
+        }
+        #logodiv{
+            width: auto;
+            height: 100px;
+            margin: 0 auto;
+            border: 1px solid black;
+
+        }
+        #navbar{
+            width: 100px;
+            height: 497px;
+            margin: 0 auto;
+            border: 1px solid black;
+            float: left;
+        }
+        #navbar h1{
+            font-size: 24px;
+        }
+
+        #header_text{
+            text-decoration: underline;
+        }
+        #nyheder{
+            width: auto;
+            height: 120px;
+            margin-top: 10px;
+            margin-right: 10px;
+            border: 1px solid black;
+        }
+        #nyheder h2{
+            display: inline-block;
+            float: left;
+
+        }
+
+        #nyheds_billede{
+            width: 100px;
+            height: 90px;
+            margin: 5px;
+            border: 1px solid black;
+            float: right;
+        }
+        #nyheds_area_div{
+            width: 1065px;
+            height: auto;
+            margin-left: 130px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #knap {
+            text-align: right;
+        }
+        #nyhedstext{
+            width: auto;
+            height: 100px;
+            margin-top: 60px;
+            margin-right: 10px;
+            margin-left: 10px;
+
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="logoerdiv">
+        <div id="starlogodiv">
+            <img id="starlogo" class="img-fluid" src="http://clipart-library.com/images/6cpoL69xi.jpg" alt="noope">
+        </div>
+        <div id="logodiv">
+            <img id="logo" class="img-fluid" src="https://api.colourbox.com/publicmedia302/1200px/24164363/media.eps" alt="noooope">
+        </div>
+    </div>
+    <nav id="navbar">
+        <h1>Oversigt</h1>
+        <a href="/Blogs">Forside</a>
+        <br>
+        <a href="/Logout">Log ud</a>
+    </nav>
+    <div id="nyheds_area_div">
+        <header id="header_text">
+            <h1>Hejsa</h1>
+        </header>
+        <button th:if="${session.admin==true}" id="knap" data-toggle="modal" data-target="#Opret">Opret nyt blogindlæg</button>
+        <div id="nyheder" th:each="blogpost : ${blogposts}">
+            <h2 th:text="${blogpost.headertext}"></h2>
+            <img id="nyheds_billede" class="img-fluid" src="https://ing.dk/sites/ing/files/illustration/2018/03/fakenewsbigstock-199552525.jpg" alt="nope">
+            <div id="nyhedstext" type="text">
+                <div th:text="${blogpost.summary}">
+                </div>
+                <a th:href="@{'/ViewBlogpost/' + ${blogpost.bid}}">Se mere...</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="Opret" tabindex="-1" role="dialog" aria-labelledby="OpretLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="OpretLongTitle">OPRET</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body",>
+                        <form action="#" th:action="@{/CreateBlogpost}" th:object="${blogpost}" method="post" id="blogform">
+                            Overskrift: <input type="text" th:field="*{headertext}">
+                            <textarea name="blogpost_text" rows="4" cols="50" th:field="*{text}" form="blogform">Enter text here...</textarea>
+                            <input type="submit">
+                        </form>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
