@@ -27,6 +27,14 @@ public class HomeController {
     public String home(Model model) throws SQLException {
         return "Login";
     }
+    @GetMapping("/Blogs")
+    public String Blogs(@ModelAttribute Login login, Model model) throws SQLException {
+
+        model.addAttribute("blogposts", bs.getAllBlogposts());
+        model.addAttribute("blogpost", new Blogpost());
+
+        return "index";
+    }
     @PostMapping("/Blogs")
     public String login(@ModelAttribute Login login, Model model, HttpSession session) throws SQLException {
 

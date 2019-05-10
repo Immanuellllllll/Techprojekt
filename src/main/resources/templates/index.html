@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:if="${session.admin !=null}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -144,7 +145,7 @@
                     <div class="modal-body",>
                         <form action="#" th:action="@{/CreateBlogpost}" th:object="${blogpost}" method="post" id="blogform">
                             Overskrift: <input type="text" th:field="*{headertext}">
-                            <textarea name="blogpost_text" rows="4" cols="50" th:field="*{text}" form="blogform">Enter text here...</textarea>
+                            <textarea name="blogpost_text" rows="4" cols="50" th:field="*{text}" form="blogform" minlength="100">Enter text here...</textarea>
                             <input type="submit">
                         </form>
                         <br>
@@ -156,4 +157,5 @@
             </div>
         </div>
 </body>
+</div>
 </html>
